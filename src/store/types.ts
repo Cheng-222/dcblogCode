@@ -28,10 +28,10 @@ export interface BlogPost {
   content: string;
   category: string;
   tags: string[];
-  coverImage?: string;
-  author: User;
-  createdAt: string;
-  updatedAt: string;
+  image: string;
+  date: string;
+  readingTime: number;
+  exclusiveLink: string; // 专属链接
 }
 
 export interface ContactFormData {
@@ -63,7 +63,7 @@ export interface BlogState {
   currentPage: number;
   postsPerPage: number;
   searchQuery: string;
-  selectedCategory: string;
+  activeTag: string;
   loading: boolean;
   error: string | null;
 }

@@ -1,134 +1,136 @@
 import { defineStore } from 'pinia';
-import type { BlogPost, BlogState, User } from '../types';
+import type { BlogState } from '../types';
 
 export const useBlogStore = defineStore('blog', {
   state: (): BlogState => ({
     posts: [
       {
         id: 1,
-        title: 'Vue 3 Composition API 最佳实践',
-        excerpt: '深入探讨Vue 3 Composition API的高级用法和最佳实践...',
-        content: 'Vue 3引入了Composition API，为组件逻辑复用和组织提供了新的方式...',
+        title: 'Vue 3 组合式 API 最佳实践',
+        excerpt: '深入探讨 Vue 3 组合式 API 的使用方法和最佳实践，帮助你写出更清晰、更易维护的代码。',
+        content: '',
         category: '前端开发',
         tags: ['Vue.js', 'JavaScript', '前端'],
-        coverImage: '/blog1.jpg',
-        author: {
-          id: 1,
-          name: '开发者',
-          email: 'dev@example.com',
-          avatar: '/avatar.png'
-        },
-        createdAt: '2024-05-10',
-        updatedAt: '2024-05-10'
+        image: 'https://picsum.photos/seed/blog1/600/400',
+        date: '2023-05-15',
+        readingTime: 8,
+        exclusiveLink: 'https://www.baidu.com'
       },
       {
         id: 2,
-        title: 'TypeScript 在大型项目中的应用',
-        excerpt: '如何在大型项目中有效使用TypeScript提升代码质量和开发效率...',
-        content: 'TypeScript为JavaScript带来了静态类型检查，在大型项目中尤为重要...',
-        category: '编程语言',
-        tags: ['TypeScript', 'JavaScript', '开发效率'],
-        author: {
-          id: 1,
-          name: '开发者',
-          email: 'dev@example.com',
-          avatar: '/avatar.png'
-        },
-        createdAt: '2024-04-25',
-        updatedAt: '2024-04-25'
+        title: '响应式设计原则与实践',
+        excerpt: '了解响应式网页设计的核心原则，掌握如何创建在各种设备上都能完美展示的网站。',
+        content: '',
+        category: 'UI/UX',
+        tags: ['响应式设计', 'CSS', '设计'],
+        image: 'https://picsum.photos/seed/blog2/600/400',
+        date: '2023-04-28',
+        readingTime: 6,
+        exclusiveLink: 'https://www.taobao.com'
       },
       {
         id: 3,
-        title: '响应式设计原则与实践',
-        excerpt: '现代网页设计中响应式设计的核心原则和实现方法...',
-        content: '响应式设计已经成为现代网页开发的标准要求...',
-        category: 'UI设计',
-        tags: ['响应式设计', 'CSS', '设计原则'],
-        coverImage: '/blog3.jpg',
-        author: {
-          id: 1,
-          name: '开发者',
-          email: 'dev@example.com',
-          avatar: '/avatar.png'
-        },
-        createdAt: '2024-04-01',
-        updatedAt: '2024-04-01'
+        title: '前端性能优化指南',
+        excerpt: '分享前端性能优化的实用技巧，从资源加载、渲染优化到运行时性能，全面提升网站体验。',
+        content: '',
+        category: '性能优化',
+        tags: ['性能优化', 'JavaScript', '前端'],
+        image: 'https://picsum.photos/seed/blog3/600/400',
+        date: '2023-04-10',
+        readingTime: 10,
+        exclusiveLink: 'https://www.jd.com'
+      },
+      {
+        id: 4,
+        title: 'CSS Grid 布局完全指南',
+        excerpt: '掌握 CSS Grid 布局的强大功能，创建复杂且响应式的网页布局，提升你的 CSS 技能。',
+        content: '',
+        category: '前端开发',
+        tags: ['CSS', '布局', '前端'],
+        image: 'https://picsum.photos/seed/blog4/600/400',
+        date: '2023-03-25',
+        readingTime: 7,
+        exclusiveLink: 'https://www.bing.com'
+      },
+      {
+        id: 5,
+        title: '用户体验设计的心理学原理',
+        excerpt: '了解用户体验设计背后的心理学原理，设计出更符合用户直觉和需求的产品。',
+        content: '',
+        category: 'UI/UX',
+        tags: ['UX设计', '心理学', '设计'],
+        image: 'https://picsum.photos/seed/blog5/600/400',
+        date: '2023-03-12',
+        readingTime: 9,
+        exclusiveLink: 'https://www.youku.com'
+      },
+      {
+        id: 6,
+        title: 'TypeScript 进阶技巧',
+        excerpt: '探索 TypeScript 的高级特性和使用技巧，提高代码质量和开发效率。',
+        content: '',
+        category: '前端开发',
+        tags: ['TypeScript', 'JavaScript', '前端'],
+        image: 'https://picsum.photos/seed/blog6/600/400',
+        date: '2023-02-28',
+        readingTime: 8,
+        exclusiveLink: 'https://www.github.com'
       }
     ],
     filteredPosts: [],
     currentPage: 1,
-    postsPerPage: 6,
+    postsPerPage: 3,
     searchQuery: '',
-    selectedCategory: '',
+    activeTag: '全部',
     loading: false,
     error: null
   }),
 
   getters: {
-    // 获取过滤和分页后的文章
-    getFilteredAndPaginatedPosts: (state) => {
-      let filtered = [...state.posts];
+    // 获取过滤后的文章
+    filteredPosts: (state) => {
+      let result = [...state.posts];
 
       // 搜索过滤
       if (state.searchQuery) {
         const query = state.searchQuery.toLowerCase();
-        filtered = filtered.filter(post =>
+        result = result.filter(post =>
           post.title.toLowerCase().includes(query) ||
           post.excerpt.toLowerCase().includes(query) ||
-          post.content.toLowerCase().includes(query)
+          post.category.toLowerCase().includes(query)
         );
       }
 
-      // 分类过滤
-      if (state.selectedCategory) {
-        filtered = filtered.filter(post => post.category === state.selectedCategory);
+      // 标签过滤
+      if (state.activeTag !== '全部') {
+        result = result.filter(post => post.tags.includes(state.activeTag));
       }
 
-      // 分页
-      const startIndex = (state.currentPage - 1) * state.postsPerPage;
-      const endIndex = startIndex + state.postsPerPage;
+      return result;
+    },
 
-      return filtered.slice(startIndex, endIndex);
+    // 获取分页后的文章
+    paginatedPosts: (state) => {
+      const start = (state.currentPage - 1) * state.postsPerPage;
+      const end = start + state.postsPerPage;
+      return state.filteredPosts.slice(start, end);
     },
 
     // 获取总页数
-    getTotalPages: (state) => {
-      let filtered = [...state.posts];
-
-      if (state.searchQuery) {
-        const query = state.searchQuery.toLowerCase();
-        filtered = filtered.filter(post =>
-          post.title.toLowerCase().includes(query) ||
-          post.excerpt.toLowerCase().includes(query) ||
-          post.content.toLowerCase().includes(query)
-        );
-      }
-
-      if (state.selectedCategory) {
-        filtered = filtered.filter(post => post.category === state.selectedCategory);
-      }
-
-      return Math.ceil(filtered.length / state.postsPerPage);
+    totalPages: (state) => {
+      return Math.ceil(state.filteredPosts.length / state.postsPerPage);
     },
 
-    // 获取所有分类
-    getCategories: (state) => {
-      const categories = new Set(state.posts.map(post => post.category));
-      return Array.from(categories);
-    },
+    // 获取所有标签（包含'全部'）
+    tags: (state) => {
+      const allTags = ['全部'];
+      const tagSet = new Set<string>();
 
-    // 获取所有标签
-    getTags: (state) => {
-      const tags = new Set<string>();
       state.posts.forEach(post => {
-        post.tags.forEach(tag => tags.add(tag));
+        post.tags.forEach(tag => tagSet.add(tag));
       });
-      return Array.from(tags);
-    },
 
-    // 根据ID获取文章
-    getPostById: (state) => (id: number) => {
-      return state.posts.find(post => post.id === id) || null;
+      return [...allTags, ...Array.from(tagSet)];
     }
   },
 
@@ -136,13 +138,12 @@ export const useBlogStore = defineStore('blog', {
     // 设置搜索查询
     setSearchQuery(query: string) {
       this.searchQuery = query;
-      this.currentPage = 1; // 重置到第一页
     },
 
-    // 设置分类过滤
-    setCategory(category: string) {
-      this.selectedCategory = category;
-      this.currentPage = 1; // 重置到第一页
+    // 设置标签过滤
+    setActiveTag(tag: string) {
+      this.activeTag = tag;
+      this.currentPage = 1;
     },
 
     // 设置当前页
@@ -150,50 +151,17 @@ export const useBlogStore = defineStore('blog', {
       this.currentPage = page;
     },
 
-    // 添加新文章
-    addPost(post: Omit<BlogPost, 'id' | 'createdAt' | 'updatedAt'>) {
-      const now = new Date().toISOString().split('T')[0];
-      const newPost: BlogPost = {
-        ...post,
-        id: Date.now(),
-        createdAt: now,
-        updatedAt: now
-      };
-      this.posts.unshift(newPost); // 添加到开头
-    },
-
-    // 更新文章
-    updatePost(id: number, updates: Partial<BlogPost>) {
-      const index = this.posts.findIndex(post => post.id === id);
-      if (index !== -1) {
-        this.posts[index] = {
-          ...this.posts[index],
-          ...updates,
-          updatedAt: new Date().toISOString().split('T')[0]
-        };
+    // 上一页
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
       }
     },
 
-    // 删除文章
-    deletePost(id: number) {
-      this.posts = this.posts.filter(post => post.id !== id);
-    },
-
-    // 模拟加载文章数据
-    async fetchPosts() {
-      this.loading = true;
-      this.error = null;
-
-      try {
-        // 模拟API请求延迟
-        await new Promise(resolve => setTimeout(resolve, 800));
-        // 实际项目中这里会调用API获取数据
-        // const response = await api.getBlogPosts();
-        // this.posts = response.data;
-      } catch (err) {
-        this.error = err instanceof Error ? err.message : '加载文章失败';
-      } finally {
-        this.loading = false;
+    // 下一页
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
       }
     }
   }

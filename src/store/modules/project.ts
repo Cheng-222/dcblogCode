@@ -56,16 +56,6 @@ export const useProjectStore = defineStore('project', {
         githubUrl: 'https://github.com/example/project5',
         tags: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         createdAt: '2024-05-12'
-      },
-      {
-        id: 6,
-        title: '移动音乐播放器',
-        description: '跨平台移动应用，支持本地音频播放和在线音乐流媒体',
-        category: '123',
-        imageUrl: '/project6.jpg',
-        liveUrl: 'https://example.com/project6',
-        tags: ['Flutter', 'Dart'],
-        createdAt: '2024-06-25'
       }
     ],
     filteredProjects: [],

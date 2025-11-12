@@ -3,7 +3,7 @@
     <div class="container">
       <div class="navbar-content">
         <router-link to="/" class="logo">
-          <span class="logo-text">Portfolio</span>
+          <span class="logo-text">dc-blog</span>
         </router-link>
         
         <!-- 桌面导航 -->
