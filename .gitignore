@@ -13,8 +13,7 @@ node_modules/
 .pnp.js
 
 # Build output
-# 在gh-pages分支中不忽略dist目录
-# dist
+dist
 dist-ssr
 *.local
 
