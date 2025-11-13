@@ -66,10 +66,17 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import NavBar from '../components/NavBar.vue'
 import ProjectCard from '../components/ProjectCard.vue'
 import Footer from '../components/Footer.vue'
+import { useProjectStore } from '../store/modules/project'
+
+// 获取项目store
+const projectStore = useProjectStore()
+
+// 精选项目 - 从store获取前3个项目
+const featuredProjects = computed(() => projectStore.getAllProjects.slice(0, 3))
 
 // 打字机效果
 const typedText = ref('')
@@ -111,32 +118,9 @@ function type() {
   }
 }
 
-// 精选项目数据
-const featuredProjects = [
-  {
-    id: 1,
-    title: '金融科技平台',
-    description: '现代化金融科技平台界面设计与开发',
-    category: '网页应用',
-    image: 'https://picsum.photos/seed/project1/600/400'
-  },
-  {
-    id: 2,
-    title: '电子商务应用',
-    description: '响应式电子商务平台，提供流畅购物体验',
-    category: '移动应用',
-    image: 'https://picsum.photos/seed/project2/600/400'
-  },
-  {
-    id: 3,
-    title: '数据可视化仪表板',
-    description: '交互式数据可视化仪表板，直观展示复杂数据',
-    category: '网页应用',
-    image: 'https://picsum.photos/seed/project3/600/400'
-  }
-]
-
-onMounted(() => {
+onMounted(async () => {
+  // 从store获取项目数据
+  await projectStore.fetchProjects()
   type()
   
   // 添加滚动动画

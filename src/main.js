@@ -4,7 +4,7 @@ import router from './router'
 import './assets/main.scss'
 // 导入自定义的store入口文件
 import pinia from './store'
-import { createPinia } from 'pinia'
+// import { createPinia } from 'pinia'
 
 const app = createApp(App)
 

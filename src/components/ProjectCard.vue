@@ -34,8 +34,10 @@ const props = defineProps({
 function getCategoryLabel(category) {
   const categoryMap = {
     'web': '网页应用',
+    'web12': '网页应用222',
     'mobile': '移动应用',
-    'design': '品牌设计'
+    'design': '品牌设计',
+    '123': '移动应用222'
   }
   return categoryMap[category] || category
 }

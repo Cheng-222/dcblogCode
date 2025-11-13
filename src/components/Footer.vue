@@ -3,7 +3,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
-          <span class="logo-text">Portfolio</span>
+          <span class="logo-text">dc-blog</span>
           <p class="logo-description">
             专注于创建美观、实用且具有创新性的数字体验。
           </p>
