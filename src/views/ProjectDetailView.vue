@@ -61,8 +61,7 @@
             :href="project.githubUrl" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="project-link github"
-          >
+            class="project-link github">
             GitHub 仓库
           </a>
         </div>
