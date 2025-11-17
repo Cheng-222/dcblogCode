@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="project-info">
-      <span class="project-category">{{ getCategoryLabel(project.category) }}</span>
+      <span class="project-category">{{ project.category }}</span>
       <h3 class="project-title">{{ project.title }}</h3>
       <p class="project-description">{{ project.description }}</p>
       <div class="project-tags" v-if="project.tags && project.tags.length > 0">
@@ -29,18 +29,6 @@ const props = defineProps({
     required: true
   }
 })
-
-// 将英文分类转换为中文显示
-function getCategoryLabel(category) {
-  const categoryMap = {
-    'web': '网页应用',
-    'web12': '网页应用222',
-    'mobile': '移动应用',
-    'design': '品牌设计',
-    '123': '移动应用222'
-  }
-  return categoryMap[category] || category
-}
 </script>
 
 <style lang="scss" scoped>

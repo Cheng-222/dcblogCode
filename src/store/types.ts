@@ -51,6 +51,7 @@ export interface UserState {
 
 export interface ProjectState {
   projects: Project[];
+  projectDetails: Record<number, string>;
   filteredProjects: Project[];
   currentFilter: string;
   loading: boolean;

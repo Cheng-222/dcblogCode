@@ -57,26 +57,6 @@ import Footer from '../components/Footer.vue'
 // 导入project store
 import { useProjectStore } from '../store/modules/project'
 
-// 统一的类别映射管理
-const CATEGORY_MAP = {
-  'web': '网页应用',
-  'web12': '网页应用222',
-  'mobile': '移动应用',
-  'design': '品牌设计',
-  '123': '移动应用222'
-}
-
-// 辅助函数：英文类别转中文类别
-function getChineseCategory(engCategory) {
-  return CATEGORY_MAP[engCategory] || engCategory
-}
-
-// 辅助函数：中文类别转英文类别
-function getEnglishCategory(zhCategory) {
-  const entry = Object.entries(CATEGORY_MAP).find(([key, value]) => value === zhCategory)
-  return entry ? entry[0] : 'all'
-}
-
 // 创建store实例
 const projectStore = useProjectStore()
 
@@ -84,20 +64,19 @@ const projectStore = useProjectStore()
 const filteredProjects = computed(() => projectStore.getFilteredProjects)
 const categories = computed(() => {
   // 确保第一个是'全部'选项
-  return ['全部', ...projectStore.getProjectCategories.map(cat => getChineseCategory(cat))]
+  return ['全部', ...projectStore.getProjectCategories]
 })
 const activeCategory = computed(() => {
   // 特殊处理'all'类别
   if (projectStore.getCurrentFilter === 'all') {
     return '全部'
   }
-  return getChineseCategory(projectStore.getCurrentFilter) || '全部'
+  return projectStore.getCurrentFilter || '全部'
 })
 
 // 过滤项目
 function filterProjects(category) {
-  // 使用统一的映射函数转换类别
-  projectStore.setFilter(category === '全部' ? 'all' : getEnglishCategory(category))
+  projectStore.setFilter(category === '全部' ? 'all' : category)
   
     
   // 添加滚动动画
@@ -134,7 +113,7 @@ onMounted(async () => {
   
   setTimeout(() => {
     document.querySelectorAll('.projects-grid > *').forEach(item => {
-      observer.observe(item)
+      item.observe(item)
     })
   }, 100)
 })

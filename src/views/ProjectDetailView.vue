@@ -10,7 +10,7 @@
         <h1 class="project-title">{{ project.title }}</h1>
         
         <div class="project-meta">
-          <span class="project-category">{{ getCategoryLabel(project.category) }}</span>
+          <span class="project-category">{{ project.category }}</span>
           <span class="project-date">{{ project.createdAt }}</span>
         </div>
         
@@ -103,34 +103,14 @@ export default {
       return projectStore.getProjectById(projectId.value)
     })
     
-    // 分类映射
-    const getCategoryLabel = (category) => {
-      const categoryMap = {
-        'web': '网页应用',
-        'mobile': '移动应用',
-        'design': '品牌设计',
-        'frontend': '前端开发',
-        'backend': '后端开发',
-        'fullstack': '全栈开发'
-      }
-      return categoryMap[category] || category
-    }
-    
     // 根据项目ID返回详细描述
     const getProjectDetailDescription = (id) => {
-      // 根据项目ID返回详细描述
-      const descriptions = {
-        1: '这是一个完整的电商网站解决方案，包含商品浏览、分类筛选、购物车管理和订单系统。前端采用响应式设计，适配各种屏幕尺寸，提供流畅的用户体验。后端实现了完整的API服务，支持商品管理、用户认证和支付集成。',
-        2: '任务管理应用提供了直观的用户界面，支持拖拽排序、状态管理和截止日期提醒。应用采用现代前端框架构建，具有良好的性能和可维护性。数据存储使用Firebase，确保数据同步和实时更新。',
-        3: '移动音乐播放器支持本地音频播放和在线流媒体功能，采用Flutter开发，实现了iOS和Android平台的统一体验。应用包含专辑封面显示、歌词同步、播放控制等功能，提供优质的音乐播放体验。',
-        4: '品牌设计系统包含完整的UI组件库和设计规范，为企业提供统一的视觉语言。设计系统涵盖了颜色系统、排版规范、组件设计和交互模式，确保产品设计的一致性和可扩展性。'
-      }
-      return descriptions[id] || '暂无详细描述'
+      // 从 Pinia store 获取详细描述
+      return projectStore.getProjectDetailDescription(id) || '暂无详细描述'
     }
     
     return {
       project,
-      getCategoryLabel,
       getProjectDetailDescription
     }
   }
