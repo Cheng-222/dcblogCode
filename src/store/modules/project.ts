@@ -1,69 +1,39 @@
 import { defineStore } from 'pinia';
 import type { Project, ProjectState } from '../types';
 
+// 导入图片资源
+import blogImage from '@/assets/img/blog.png';
+import ajaxImage from '@/assets/img/ajax.png';
+
 export const useProjectStore = defineStore('project', {
   state: (): ProjectState => ({
     projects: [
       {
         id: 1,
-        title: '电商网站',
-        description: '响应式电商平台，支持商品浏览、购物车和支付功能',
+        title: '个人博客前端',
+        description: '基于Vue3+TypeScript的现代化响应式博客，支持深色主题与Markdown渲染。',
         category: '网页应用',
-        imageUrl: '/project1.jpg',
-        liveUrl: 'https://baidu.com',
-        githubUrl: 'https://github.com/example/project1',
-        tags: ['Vue.js', 'TypeScript', 'SCSS'],
-        createdAt: '2024-01-15'
+        imageUrl: blogImage,
+        liveUrl: 'https://dcblog.pages.dev',
+        githubUrl: 'https://github.com/Cheng-222/dcblogCode',
+        tags: ['Vue3', 'TypeScript', 'Vite', 'Pinia', 'SCSS', 'Markdown'],
+        createdAt: '2025-10-15'
       },
       {
         id: 2,
-        title: '任务管理应用',
-        description: '现代化任务管理工具，支持拖拽排序和状态管理',
+        title: '创新前沿内容管理系统前端',
+        description: '原生JS+Bootstrap5实现的内容后台管理界面，支持富文本发布与数据筛选。',
         category: '网页应用',
-        imageUrl: '/project2.jpg',
-        liveUrl: 'https://taobao.com',
-        githubUrl: 'https://github.com/example/project2',
-        tags: ['React', 'Firebase'],
-        createdAt: '2024-02-10'
-      },
-      {
-        id: 3,
-        title: '移动音乐播放器',
-        description: '跨平台移动应用，支持本地音频播放和在线音乐流媒体',
-        category: '移动应用',
-        imageUrl: '/project3.jpg',
-        liveUrl: 'https://example.com/project3',
-        tags: ['Flutter', 'Dart'],
-        createdAt: '2024-03-05'
-      },
-      {
-        id: 4,
-        title: '品牌设计系统',
-        description: '完整的企业品牌设计系统，包含UI组件库和设计规范',
-        category: '品牌设计',
-        imageUrl: '/project4.jpg',
-        githubUrl: 'https://github.com/example/project4',
-        tags: ['Figma', 'Design System'],
-        createdAt: '2024-04-20'
-      },
-      {
-        id: 5,
-        title: '个人博客',
-        description: '响应式个人博客，支持Markdown写作和评论功能',
-        category: '网页应用',
-        imageUrl: '/project5.jpg',
-        liveUrl: 'https://example.com/project5',
-        githubUrl: 'https://github.com/example/project5',
-        tags: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
-        createdAt: '2024-05-12'
+        imageUrl: ajaxImage,
+        liveUrl: 'https://ajax-management-system.pages.dev/',
+        githubUrl: 'https://github.com/Cheng-222/Ajax-management-system',
+        tags: ['JavaScript', 'Bootstrap5', 'Axios', 'wangEditor', 'HTML', 'CSS'],
+        createdAt: '2025-08-15'
       }
     ],
     projectDetails: {
-      1: '这是一个完整的电商网站解决方案，包含商品浏览、分类筛选、购物车管理和订单系统。前端采用响应式设计，适配各种屏幕尺寸，提供流畅的用户体验。后端实现了完整的API服务，支持商品管理、用户认证和支付集成。',
-      2: '任务管理应用提供了直观的用户界面，支持拖拽排序、状态管理和截止日期提醒。应用采用现代前端框架构建，具有良好的性能和可维护性。数据存储使用Firebase，确保数据同步和实时更新。',
-      3: '移动音乐播放器支持本地音频播放和在线流媒体功能，采用Flutter开发，实现了iOS和Android平台的统一体验。应用包含专辑封面显示、歌词同步、播放控制等功能，提供优质的音乐播放体验。',
-      4: '品牌设计系统包含完整的UI组件库和设计规范，为企业提供统一的视觉语言。设计系统涵盖了颜色系统、排版规范、组件设计和交互模式，确保产品设计的一致性和可扩展性。',
-      5: '个人博客采用Vue.js和Nuxt.js构建，支持Markdown写作和评论功能。前端采用响应式设计，提供流畅的用户体验。后端使用Firebase存储博客内容和评论数据。',
+      1: '采用Vue3 Composition API与TypeScript开发，使用Vite构建，Pinia做状态管理，SCSS编写样式，支持分页、搜索、评论、懒加载、进度指示等功能；路由懒加载与代码分割优化性能；完全响应式，多端体验一致。',
+      2: '使用原生HTML+CSS+JavaScript配合Bootstrap5搭建，集成wangEditor富文本编辑器与Axios完成前后端数据交互；实现登录状态保持、文章发布、列表筛选、响应式表格、移动端适配等功能；Git进行版本控制，与后端团队协作完成API对接。'
     },
     filteredProjects: [],
     currentFilter: 'all',

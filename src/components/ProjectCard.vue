@@ -2,7 +2,8 @@
   <router-link :to="{ name: 'project-detail', params: { id: project.id } }" class="project-card-link">
     <div class="project-card">
     <div class="project-image-container">
-      <img :src="project.imageUrl || '/placeholder.jpg'" :alt="project.title" class="project-image" />
+      <img :src="project.imageUrl" :alt="project.title" class="project-image" />
+      
       <div class="project-overlay">
         <a v-if="project.liveUrl" :href="project.liveUrl" target="_blank" class="project-link">在线预览</a>
         <a v-if="project.githubUrl" :href="project.githubUrl" target="_blank" class="project-link github">GitHub</a>

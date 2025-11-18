@@ -113,7 +113,8 @@ onMounted(async () => {
   
   setTimeout(() => {
     document.querySelectorAll('.projects-grid > *').forEach(item => {
-      item.observe(item)
+      item.classList.remove('slide-up')
+      observer.observe(item)
     })
   }, 100)
 })

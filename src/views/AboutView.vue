@@ -15,22 +15,15 @@
       <div class="container">
         <div class="about-content slide-up">
           <div class="about-image">
-            <img src="https://picsum.photos/seed/avatar/400/400" alt="个人照片" />
+            <img src="@/assets/img/dc.jpg" alt="个人照片" />
           </div>
           <div class="about-text">
-            <h2 class="section-title">你好，我是<span class="highlight">设计师</span></h2>
+            <h2 class="section-title">你好，我是<span class="highlight">杜程</span></h2>
             <p class="about-description">
-              我是一名充满热情的前端开发者和UI/UX设计师，拥有超过5年的行业经验。
-              我热衷于将复杂的问题转化为简单、优雅的解决方案，始终追求卓越的用户体验。
+              深圳大学计算机专业本科生，热爱前端技术，擅长Vue3+TypeScript，注重用户体验与性能优化。
             </p>
             <p class="about-description">
-              我的设计理念是"形式服从功能"，但同时也注重美学细节。我相信优秀的设计
-              应该既美观又实用，能够在第一时间吸引用户，并提供流畅直观的交互体验。
-            </p>
-            <p class="about-description">
-              在过去的项目中，我积累了丰富的前端开发经验，熟练掌握现代Web技术栈，
-              包括HTML5、CSS3、JavaScript、Vue.js、React等。我善于与团队协作，
-              能够高效地将设计稿转化为高质量的代码。
+              00后前端开发者，目前就读于深圳大学计算机科学与技术专业，预计2026年毕业。在校期间通过自学与项目实践掌握主流前端技术栈，包括Vue3、TypeScript、Vite、Pinia等，能独立完成响应式Web应用的设计与开发。重视代码规范与工程化，具备良好的团队协作与沟通能力。
             </p>
           </div>
         </div>
@@ -112,45 +105,38 @@ import Footer from '../components/Footer.vue'
 
 // 技能数据
 const frontendSkills = [
-  { name: 'HTML5/CSS3', level: 95 },
-  { name: 'JavaScript', level: 90 },
-  { name: 'Vue.js', level: 85 },
-  { name: 'React', level: 80 },
-  { name: 'TypeScript', level: 75 },
-  { name: 'Webpack/Vite', level: 80 }
+  { name: 'HTML5/CSS3/ES6+', level: 90 },
+  { name: 'Vue3 & 生态(VueRouter,Pinia)', level: 85 },
+  { name: 'TypeScript', level: 80 },
+  { name: 'Vite/Webpack 构建优化', level: 75 },
+  { name: 'Axios/Ajax 数据交互', level: 85 },
+  { name: 'Git 版本控制', level: 80 }
 ]
 
 const designSkills = [
-  { name: 'UI设计', level: 85 },
-  { name: 'UX设计', level: 80 },
-  { name: 'Figma', level: 90 },
-  { name: 'Adobe XD', level: 85 },
-  { name: '响应式设计', level: 90 },
-  { name: '动效设计', level: 75 }
+  { name: '响应式布局', level: 80 },
+  { name: 'SCSS/样式系统', level: 75 },
+  { name: 'UI/UX 基础', level: 70 },
+  { name: 'Bootstrap5', level: 70 },
+  { name: '深色主题设计', level: 75 },
+  { name: '动画与过渡', level: 70 }
 ]
 
 // 教育经历
 const education = [
   {
-    date: '2016 - 2020',
-    degree: '计算机科学与技术 学士学位',
-    school: '北京大学',
-    description: '主修计算机科学，辅修设计学，GPA 3.8/4.0，获得优秀毕业生称号。'
-  },
-  {
-    date: '2020 - 2022',
-    degree: '交互设计 硕士学位',
-    school: '清华大学',
-    description: '专注于用户体验设计和前端开发，发表2篇学术论文，获得优秀研究生奖学金。'
+    date: '2022 - 2026',
+    degree: '计算机科学与技术 学士',
+    school: '深圳大学',
+    description: 'GPA 3.0/4.0，主修Web编程、数据结构、算法、操作系统、数据库、计算机网络等课程。'
   }
 ]
 
 // 统计数据
 const stats = [
-  { number: '5+', title: '年工作经验' },
-  { number: '50+', title: '完成项目' },
-  { number: '25+', title: '满意客户' },
-  { number: '10+', title: '行业奖项' }
+  { number: '0', title: '工作经验（在校项目经验）' },
+  { number: '3', title: '完成项目数' },
+ 
 ]
 
 onMounted(() => {
@@ -208,29 +194,49 @@ onMounted(() => {
       
       .about-image {
         position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         
         img {
           width: 100%;
           max-width: 400px;
-          border-radius: 8px;
-          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+          height: auto;
+          border-radius: 12px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
           transition: transform var(--transition-normal);
+          position: relative;
+          z-index: 2;
           
           &:hover {
             transform: scale(1.02);
           }
         }
         
+        &::before {
+          content: '';
+          position: absolute;
+          top: -15px;
+          left: -15px;
+          right: -15px;
+          bottom: -15px;
+          border: 3px solid var(--primary-color);
+          border-radius: 15px;
+          z-index: 1;
+          opacity: 0.8;
+        }
+        
         &::after {
           content: '';
           position: absolute;
-          top: 20px;
-          left: 20px;
-          right: -20px;
-          bottom: -20px;
-          border: 2px solid var(--primary-color);
-          border-radius: 8px;
-          z-index: -1;
+          top: -25px;
+          left: -25px;
+          right: -25px;
+          bottom: -25px;
+          border: 2px solid var(--secondary-color);
+          border-radius: 18px;
+          z-index: 0;
+          opacity: 0.6;
         }
       }
       
@@ -450,6 +456,24 @@ onMounted(() => {
           
           img {
             max-width: 300px;
+          }
+          
+          &::before {
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-width: 2px;
+            border-radius: 12px;
+          }
+          
+          &::after {
+            top: -18px;
+            left: -18px;
+            right: -18px;
+            bottom: -18px;
+            border-width: 1px;
+            border-radius: 14px;
           }
         }
         

@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import type { User, UserState } from '../types';
 
+
 export const useUserStore = defineStore('user', {
   state: (): UserState => ({
     currentUser: null,

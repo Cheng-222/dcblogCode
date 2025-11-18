@@ -13,8 +13,8 @@
             <span class="cursor">|</span>
           </h1>
           <p class="hero-description">
+            深圳大学计算机专业本科生，热爱前端技术，擅长Vue3+TypeScript，注重用户体验与性能优化。
             专注于创建美观、实用且具有创新性的数字体验。
-            结合技术与艺术，打造令人难忘的用户界面。
           </p>
           <div class="hero-cta">
             <router-link to="/projects" class="btn btn-primary">
@@ -36,7 +36,7 @@
         <div class="about-content slide-up">
           <h2 class="section-title">关于我</h2>
           <p class="about-text">
-            我是一名充满热情充满探索欲的新手前端开发者
+            00后前端开发者，目前就读于深圳大学计算机科学与技术专业，预计2026年毕业。在校期间通过自学与项目实践掌握主流前端技术栈，包括Vue3、TypeScript、Vite、Pinia等，能独立完成响应式Web应用的设计与开发。重视代码规范与工程化，具备良好的团队协作与沟通能力。
           </p>
           <router-link to="/about" class="btn btn-outline">了解更多</router-link>
         </div>
@@ -80,7 +80,7 @@ const featuredProjects = computed(() => projectStore.getAllProjects.slice(0, 3))
 
 // 打字机效果
 const typedText = ref('')
-const texts = ['前端开发者', '探索新的技术']
+const texts = ['一名新手前端工程师', '热爱性能优化与用户体验', '持续学习新技术']
 const typingSpeed = 150
 const deletingSpeed = 100
 const delayBetweenTexts = 2000
