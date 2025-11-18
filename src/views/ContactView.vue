@@ -57,6 +57,30 @@
                   <p class="contact-location">深圳大学</p>
                 </div>
               </div>
+              
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5.5 10c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-7 0c-.83 0-1.5-.67-1.5-1.5S9.33 9 10.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                  </svg>
+                </div>
+                <div class="contact-text">
+                  <h3>QQ</h3>
+                  <p class="contact-location">2518173287</p>
+                </div>
+              </div>
+              
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8.5 14.5L11 12l2.5 2.5L16 12l2.5 2.5V4h-11v10.5z M6 2v18l2-2h10l2 2V2H6z"/>
+                  </svg>
+                </div>
+                <div class="contact-text">
+                  <h3>微信</h3>
+                  <p class="contact-location">Doec-0222</p>
+                </div>
+              </div>
             </div>
             
             <div class="social-links">
@@ -65,6 +89,20 @@
                   <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/>
                 </svg>
               </a>
+              
+              <div class="social-link" aria-label="QQ">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5.5 10c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-7 0c-.83 0-1.5-.67-1.5-1.5S9.33 9 10.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                </svg>
+                <span class="tooltip">2518173287</span>
+              </div>
+              
+              <div class="social-link" aria-label="微信">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8.5 14.5L11 12l2.5 2.5L16 12l2.5 2.5V4h-11v10.5z M6 2v18l2-2h10l2 2V2H6z"/>
+                </svg>
+                <span class="tooltip">Doec-0222</span>
+              </div>
             </div>
           </div>
           
@@ -291,11 +329,49 @@ function handleSubmit() {
             background-color: var(--bg-secondary);
             color: var(--text-secondary);
             transition: all var(--transition-fast);
+            position: relative;
+            cursor: pointer;
             
             &:hover {
               background-color: var(--primary-color);
               color: white;
               transform: translateY(-3px);
+            }
+            
+            .tooltip {
+              position: absolute;
+              bottom: calc(100% + 10px);
+              left: 50%;
+              transform: translateX(-50%);
+              background-color: var(--bg-primary);
+              color: var(--text-primary);
+              padding: 8px 12px;
+              border-radius: 6px;
+              font-size: 0.875rem;
+              font-weight: 500;
+              white-space: nowrap;
+              opacity: 0;
+              visibility: hidden;
+              transition: all var(--transition-fast);
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              z-index: 1000;
+              
+              &::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                border: 6px solid transparent;
+                border-top-color: var(--bg-primary);
+              }
+            }
+            
+            &:hover .tooltip {
+              opacity: 1;
+              visibility: visible;
+              bottom: calc(100% + 15px);
             }
           }
         }
